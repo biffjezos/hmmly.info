@@ -1,0 +1,80 @@
+
+/* ========================================
+   Cinematic Teaser — Full Viewport
+   ======================================== */
+
+:root {
+  --color-background: #111214;
+  --color-video-surface: #292B2F;
+  --color-text: #E8E6E1;
+
+  --page-padding: 24px;
+  --video-border-radius: 4px;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Full viewport canvas */
+.teaser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  padding: var(--page-padding);
+  overflow: hidden;
+}
+
+/* Responsive video container */
+.teaser__video {
+  width: 100%;
+  height: auto;
+
+  /* Keep the video inside both viewport dimensions */
+  max-width: calc((100dvh - 2 * var(--page-padding)) * 16 / 9);
+  max-height: calc(100dvh - 2 * var(--page-padding));
+
+  aspect-ratio: 16 / 9;
+
+  background-color: var(--color-video-surface);
+  border-radius: var(--video-border-radius);
+  overflow: hidden;
+}
+
+/* Embedded video */
+.teaser__video iframe,
+.teaser__video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .teaser {
+    padding: 16px;
+  }
+
+  .teaser__video {
+    max-width: 100%;
+    max-height: calc(100dvh - 32px);
+  }
+}
